@@ -1,0 +1,4 @@
+D:\sem 6\pt3\project\Lecturer-Evaluation-System\Lecturer Evaluation System\Lecturer Evaluation System\bin\Lecturer Evaluation System.dll
+D:\sem 6\pt3\project\Lecturer-Evaluation-System\Lecturer Evaluation System\Lecturer Evaluation System\bin\Lecturer Evaluation System.pdb
+D:\sem 6\pt3\project\Lecturer-Evaluation-System\Lecturer Evaluation System\Lecturer Evaluation System\obj\Debug\Lecturer Evaluation System.dll
+D:\sem 6\pt3\project\Lecturer-Evaluation-System\Lecturer Evaluation System\Lecturer Evaluation System\obj\Debug\Lecturer Evaluation System.pdb
