@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Class" EntityType="DatabaseModel.Store.Class" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Enroll" EntityType="DatabaseModel.Store.Enroll" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rate" EntityType="DatabaseModel.Store.Rate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Semester" EntityType="DatabaseModel.Store.Semester" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Subject" EntityType="DatabaseModel.Store.Subject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="DatabaseModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Class_Semester" Association="DatabaseModel.Store.FK_Class_Semester">
+            <End Role="Semester" EntitySet="Semester" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Subject" Association="DatabaseModel.Store.FK_Class_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_User" Association="DatabaseModel.Store.FK_Class_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enroll_Class" Association="DatabaseModel.Store.FK_Enroll_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Enroll" EntitySet="Enroll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enroll_User" Association="DatabaseModel.Store.FK_Enroll_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Enroll" EntitySet="Enroll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_Class" Association="DatabaseModel.Store.FK_Rate_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_User" Association="DatabaseModel.Store.FK_Rate_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="classID" />
+          </Key>
+          <Property Name="classID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="className" Type="nchar" MaxLength="10" />
+          <Property Name="subjectID" Type="int" />
+          <Property Name="semesterID" Type="int" />
+          <Property Name="lecturerID" Type="int" />
+        </EntityType>
+        <EntityType Name="Enroll">
+          <Key>
+            <PropertyRef Name="enrollID" />
+          </Key>
+          <Property Name="enrollID" Type="int" Nullable="false" />
+          <Property Name="studentID" Type="int" />
+          <Property Name="classID" Type="int" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="rateID" />
+          </Key>
+          <Property Name="rateID" Type="int" Nullable="false" />
+          <Property Name="question1" Type="tinyint" />
+          <Property Name="question2" Type="tinyint" />
+          <Property Name="question3" Type="tinyint" />
+          <Property Name="question4" Type="tinyint" />
+          <Property Name="question5" Type="tinyint" />
+          <Property Name="comment" Type="nvarchar" MaxLength="150" />
+          <Property Name="studentID" Type="int" />
+          <Property Name="classID" Type="int" />
+        </EntityType>
+        <EntityType Name="Semester">
+          <Key>
+            <PropertyRef Name="semesterID" />
+          </Key>
+          <Property Name="semesterID" Type="int" Nullable="false" />
+          <Property Name="semesterName" Type="nchar" MaxLength="10" />
+          <Property Name="startDate" Type="date" />
+          <Property Name="endDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="subjectID" />
+          </Key>
+          <Property Name="subjectID" Type="int" Nullable="false" />
+          <Property Name="subjectName" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fullName" Type="nchar" MaxLength="10" />
+          <Property Name="userType" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Class_Semester">
+          <End Role="Semester" Type="DatabaseModel.Store.Semester" Multiplicity="0..1" />
+          <End Role="Class" Type="DatabaseModel.Store.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semester">
+              <PropertyRef Name="semesterID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="semesterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Subject">
+          <End Role="Subject" Type="DatabaseModel.Store.Subject" Multiplicity="0..1" />
+          <End Role="Class" Type="DatabaseModel.Store.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="subjectID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="subjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_User">
+          <End Role="User" Type="DatabaseModel.Store.User" Multiplicity="0..1" />
+          <End Role="Class" Type="DatabaseModel.Store.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="lecturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enroll_Class">
+          <End Role="Class" Type="DatabaseModel.Store.Class" Multiplicity="0..1" />
+          <End Role="Enroll" Type="DatabaseModel.Store.Enroll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Enroll">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enroll_User">
+          <End Role="User" Type="DatabaseModel.Store.User" Multiplicity="0..1" />
+          <End Role="Enroll" Type="DatabaseModel.Store.Enroll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Enroll">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_Class">
+          <End Role="Class" Type="DatabaseModel.Store.Class" Multiplicity="0..1" />
+          <End Role="Rate" Type="DatabaseModel.Store.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_User">
+          <End Role="User" Type="DatabaseModel.Store.User" Multiplicity="0..1" />
+          <End Role="Rate" Type="DatabaseModel.Store.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classes" EntityType="DatabaseModel.Class" />
+          <EntitySet Name="Enrolls" EntityType="DatabaseModel.Enroll" />
+          <EntitySet Name="Rates" EntityType="DatabaseModel.Rate" />
+          <EntitySet Name="Semesters" EntityType="DatabaseModel.Semester" />
+          <EntitySet Name="Subjects" EntityType="DatabaseModel.Subject" />
+          <EntitySet Name="Users" EntityType="DatabaseModel.User" />
+          <AssociationSet Name="FK_Class_Semester" Association="DatabaseModel.FK_Class_Semester">
+            <End Role="Semester" EntitySet="Semesters" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Subject" Association="DatabaseModel.FK_Class_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_User" Association="DatabaseModel.FK_Class_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enroll_Class" Association="DatabaseModel.FK_Enroll_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Enroll" EntitySet="Enrolls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_Class" Association="DatabaseModel.FK_Rate_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Rate" EntitySet="Rates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enroll_User" Association="DatabaseModel.FK_Enroll_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Enroll" EntitySet="Enrolls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_User" Association="DatabaseModel.FK_Rate_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Rate" EntitySet="Rates" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="classID" />
+          </Key>
+          <Property Name="classID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="className" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="subjectID" Type="Int32" />
+          <Property Name="semesterID" Type="Int32" />
+          <Property Name="lecturerID" Type="Int32" />
+          <NavigationProperty Name="Semester" Relationship="DatabaseModel.FK_Class_Semester" FromRole="Class" ToRole="Semester" />
+          <NavigationProperty Name="Subject" Relationship="DatabaseModel.FK_Class_Subject" FromRole="Class" ToRole="Subject" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.FK_Class_User" FromRole="Class" ToRole="User" />
+          <NavigationProperty Name="Enrolls" Relationship="DatabaseModel.FK_Enroll_Class" FromRole="Class" ToRole="Enroll" />
+          <NavigationProperty Name="Rates" Relationship="DatabaseModel.FK_Rate_Class" FromRole="Class" ToRole="Rate" />
+        </EntityType>
+        <EntityType Name="Enroll">
+          <Key>
+            <PropertyRef Name="enrollID" />
+          </Key>
+          <Property Name="enrollID" Type="Int32" Nullable="false" />
+          <Property Name="studentID" Type="Int32" />
+          <Property Name="classID" Type="Int32" />
+          <NavigationProperty Name="Class" Relationship="DatabaseModel.FK_Enroll_Class" FromRole="Enroll" ToRole="Class" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.FK_Enroll_User" FromRole="Enroll" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="rateID" />
+          </Key>
+          <Property Name="rateID" Type="Int32" Nullable="false" />
+          <Property Name="question1" Type="Byte" />
+          <Property Name="question2" Type="Byte" />
+          <Property Name="question3" Type="Byte" />
+          <Property Name="question4" Type="Byte" />
+          <Property Name="question5" Type="Byte" />
+          <Property Name="comment" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="studentID" Type="Int32" />
+          <Property Name="classID" Type="Int32" />
+          <NavigationProperty Name="Class" Relationship="DatabaseModel.FK_Rate_Class" FromRole="Rate" ToRole="Class" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.FK_Rate_User" FromRole="Rate" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Semester">
+          <Key>
+            <PropertyRef Name="semesterID" />
+          </Key>
+          <Property Name="semesterID" Type="Int32" Nullable="false" />
+          <Property Name="semesterName" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="startDate" Type="DateTime" />
+          <Property Name="endDate" Type="DateTime" />
+          <NavigationProperty Name="Classes" Relationship="DatabaseModel.FK_Class_Semester" FromRole="Semester" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="subjectID" />
+          </Key>
+          <Property Name="subjectID" Type="Int32" Nullable="false" />
+          <Property Name="subjectName" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Classes" Relationship="DatabaseModel.FK_Class_Subject" FromRole="Subject" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fullName" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="userType" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Classes" Relationship="DatabaseModel.FK_Class_User" FromRole="User" ToRole="Class" />
+          <NavigationProperty Name="Enrolls" Relationship="DatabaseModel.FK_Enroll_User" FromRole="User" ToRole="Enroll" />
+          <NavigationProperty Name="Rates" Relationship="DatabaseModel.FK_Rate_User" FromRole="User" ToRole="Rate" />
+        </EntityType>
+        <Association Name="FK_Class_Semester">
+          <End Role="Semester" Type="DatabaseModel.Semester" Multiplicity="0..1" />
+          <End Role="Class" Type="DatabaseModel.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semester">
+              <PropertyRef Name="semesterID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="semesterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Subject">
+          <End Role="Subject" Type="DatabaseModel.Subject" Multiplicity="0..1" />
+          <End Role="Class" Type="DatabaseModel.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="subjectID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="subjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_User">
+          <End Role="User" Type="DatabaseModel.User" Multiplicity="0..1" />
+          <End Role="Class" Type="DatabaseModel.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="lecturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enroll_Class">
+          <End Role="Class" Type="DatabaseModel.Class" Multiplicity="0..1" />
+          <End Role="Enroll" Type="DatabaseModel.Enroll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Enroll">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_Class">
+          <End Role="Class" Type="DatabaseModel.Class" Multiplicity="0..1" />
+          <End Role="Rate" Type="DatabaseModel.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enroll_User">
+          <End Role="User" Type="DatabaseModel.User" Multiplicity="0..1" />
+          <End Role="Enroll" Type="DatabaseModel.Enroll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Enroll">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_User">
+          <End Role="User" Type="DatabaseModel.User" Multiplicity="0..1" />
+          <End Role="Rate" Type="DatabaseModel.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="DatabaseModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="className" ColumnName="className" />
+                <ScalarProperty Name="subjectID" ColumnName="subjectID" />
+                <ScalarProperty Name="semesterID" ColumnName="semesterID" />
+                <ScalarProperty Name="lecturerID" ColumnName="lecturerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enrolls">
+            <EntityTypeMapping TypeName="DatabaseModel.Enroll">
+              <MappingFragment StoreEntitySet="Enroll">
+                <ScalarProperty Name="enrollID" ColumnName="enrollID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rates">
+            <EntityTypeMapping TypeName="DatabaseModel.Rate">
+              <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="rateID" ColumnName="rateID" />
+                <ScalarProperty Name="question1" ColumnName="question1" />
+                <ScalarProperty Name="question2" ColumnName="question2" />
+                <ScalarProperty Name="question3" ColumnName="question3" />
+                <ScalarProperty Name="question4" ColumnName="question4" />
+                <ScalarProperty Name="question5" ColumnName="question5" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semesters">
+            <EntityTypeMapping TypeName="DatabaseModel.Semester">
+              <MappingFragment StoreEntitySet="Semester">
+                <ScalarProperty Name="semesterID" ColumnName="semesterID" />
+                <ScalarProperty Name="semesterName" ColumnName="semesterName" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="DatabaseModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="subjectID" ColumnName="subjectID" />
+                <ScalarProperty Name="subjectName" ColumnName="subjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DatabaseModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="DatabaseModel.Class" Width="1.5" PointX="3" PointY="3.5" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Enroll" Width="1.5" PointX="5.25" PointY="3.875" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Rate" Width="1.5" PointX="8.25" PointY="3.375" Height="3.1340950520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Semester" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Subject" Width="1.5" PointX="0.75" PointY="7.5" Height="1.5956835937499978" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.User" Width="1.5" PointX="0.75" PointY="3.875" Height="2.1725878906249996" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel.FK_Class_Semester" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.7401432291666668" />
+          <ConnectorPoint PointX="3.75" PointY="1.7401432291666668" />
+          <ConnectorPoint PointX="3.75" PointY="3.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="DatabaseModel.FK_Class_Subject" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.297841796874998" />
+          <ConnectorPoint PointX="3.75" PointY="8.297841796874998" />
+          <ConnectorPoint PointX="3.75" PointY="6.4417936197916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="DatabaseModel.FK_Class_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.9612939453125" />
+          <ConnectorPoint PointX="3" PointY="4.9612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DatabaseModel.FK_Enroll_Class" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.8651432291666667" />
+          <ConnectorPoint PointX="5.25" PointY="4.8651432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="DatabaseModel.FK_Rate_Class" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.1797900390625" />
+          <ConnectorPoint PointX="8.25" PointY="6.1797900390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="DatabaseModel.FK_Enroll_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="3.875" />
+          <ConnectorPoint PointX="1.5" PointY="3.25" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="3.2499999999999996" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="3.25" />
+          <ConnectorPoint PointX="4.875" PointY="3.25" />
+          <ConnectorPoint PointX="4.875" PointY="4.3388196145833335" />
+          <ConnectorPoint PointX="5.25" PointY="4.3388196145833335" />
+        </AssociationConnector>
+        <AssociationConnector Association="DatabaseModel.FK_Rate_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="3.875" />
+          <ConnectorPoint PointX="1.9062525" PointY="3.40625" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="3.4062499999999996" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="3.40625" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="3.4062499999999996" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="3.40625" />
+          <ConnectorPoint PointX="8.25" PointY="3.40625" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
