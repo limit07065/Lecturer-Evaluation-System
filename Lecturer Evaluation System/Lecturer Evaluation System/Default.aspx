@@ -5,10 +5,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Preloader Start -->
+    <!--
     <div id="preloader">
         <div class="loader">
         </div>
     </div>
+    -->
     <!-- Preloader End -->
     <!-- Home & Menu Section Start -->
     <header id="home" class="home-section">
@@ -19,7 +21,8 @@
                 
                     <div class="col-sm-3">
                         <div class="logo">
-                            <a href="index-2.html">Rolling</a>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/">UTM</asp:HyperLink>
+                            
                         </div>
                     </div>
                     
@@ -38,14 +41,13 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a class="smoth-scroll" href="#home">Home <div class="ripple-wrapper"></div></a>
                                         </li>
+
                                         <li><a class="smoth-scroll" href="#about">About</a>
                                         </li>
-                                        <li><a class="smoth-scroll" href="#portfolio">Portfolio</a>
+
+                                        <li><a class="smoth-scroll" href="#login">Login</a>
                                         </li>
-                                        <li><a class="smoth-scroll" href="#testimonials">Testimonial</a>
-                                        </li>
-                                        <li><a class="smoth-scroll" href="#services">services</a>
-                                        </li>
+                                       
                                         <li><a class="smoth-scroll" href="#contact">Contact</a>
                                         </li>
                                     </ul>
@@ -64,11 +66,11 @@
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <div class="header-text">
-                                    <p>Hi! This is John Doe</p>
+                                    <p>Welcome</p>
                                     <h2><span class="typing"></span></h2>
                                     
                                     <div class="margin-top-60">
-                          <a class="button button-style button-style-icon fa fa-long-arrow-right smoth-scroll" href="#portfolio">View Portfolio</a>
+                          <a class="button button-style button-style-icon fa fa-long-arrow-right smoth-scroll" href="#login">To Login</a>
                                   </div>
                                 
                                 </div>
@@ -92,7 +94,7 @@
               <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="about-me section-space-padding">
                   
-                  <h2>About Me.</h2>
+                  <h2>Lecturer Evaluation System.</h2>
                   
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                  </div>
@@ -102,128 +104,7 @@
           </div>
        </section>
     <!-- About End -->
-    <!-- Portfolio Start -->
-    <section id="portfolio" class="portfolio section-space-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="section-title">
-                        <h2>My Portfolio.</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <ul class="portfolio">
-                    <li class="filter" data-filter="all">all</li>
-                    <li class="filter" data-filter=".apps">apps</li>
-                    <li class="filter" data-filter=".mockups">mockups</li>
-                    <li class="filter" data-filter=".wordpress">wordpress</li>
-                </ul>
-            </div>
-            
-            <div class="portfolio-inner">
-                <div class="row">
-                
-                
-                    <div class="col-md-4 col-sm-6 col-xs-12 mix apps">
-                        <div class="item">
-                            <a href="images/portfolio/1.jpg" class="portfolio-popup" title="Project Title">
-                                <img src="images/portfolio/1.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 col-sm-6 col-xs-12 mix mockups">
-                        <div class="item">
-                            <a href="images/portfolio/2.jpg" class="portfolio-popup" title="Project Title">
-                                <img src="images/portfolio/2.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 col-sm-6 col-xs-12 mix apps">
-                        <div class="item">
-                            <a href="images/portfolio/3.jpg" class="portfolio-popup" title="Project Title">
-                                <img src="images/portfolio/3.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 col-sm-6 col-xs-12 mix mockups wordpress">
-                        <div class="item">
-                            <a href="images/portfolio/4.jpg" class="portfolio-popup" title="Project Title">
-                                <img src="images/portfolio/4.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 col-sm-6 col-xs-12 mix wordpress apps">
-                        <div class="item">
-                            <a href="images/portfolio/5.jpg" class="portfolio-popup" title="Project Title">
-                                <img src="images/portfolio/5.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 col-sm-6 col-xs-12 mix apps mockups wordpress" title="Project Title">
-                        <div class="item">
-                            <a href="images/portfolio/6.jpg" class="portfolio-popup">
-                                <img src="images/portfolio/6.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center margin-top-50">
-          <a class="button button-style button-style-dark button-style-icon fa fa-long-arrow-right smoth-scroll" href="#contact">Let's Discuss</a>
-            </div>
-     
-     </section>
-    <!-- Portfolio End -->
-    <!-- Testimonial Start -->
-    <section id="testimonials" class="testimonial-section section-space-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="section-title">
-                        <h2>Testimonials.</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="testimonial-carousel-list margin-top-20">
-                
-                    <div class="testimonial-word text-center">
-                    <img src="images/testimonial/1.png" class="img-responsive" alt="">
-                        <h2>John doe</h2>
-                        <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duisauteiruredolor in reprehenderit in voluptate.</p>
-                    </div>
-                    
-                    <div class="testimonial-word text-center">
-                    <img src="images/testimonial/2.png" class="img-responsive" alt="">
-                        <h2>John doe</h2>
-                        <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duisauteiruredolor in reprehenderit in voluptate.</p>
-                    </div>
-                    
-                    <div class="testimonial-word text-center">
-                    <img src="images/testimonial/3.png" class="img-responsive" alt="">
-                        <h2>John doe</h2>
-                        <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duisauteiruredolor in reprehenderit in voluptate.</p>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Testimonial End -->
-    <!-- statistics -->
+     <!-- statistics -->
     <section class="statistics-section section-space-padding bg-cover text-center" data-stellar-background-ratio="0.3">
          <div class="container">     
 
@@ -235,7 +116,7 @@
               <div class="statistics-icon"><i class="fa fa-check-square-o color-1"></i>
               </div>
               <div class="statistics-content">
-                <h5><span data-count="2025" class="statistics-count">2025</span></h5><span>Projects Done</span>
+                <h5><span data-count="2025" class="statistics-count">2025</span></h5><span>Expected Total Evaluations</span>
               </div>
             </div>
           </div>
@@ -245,7 +126,7 @@
               <div class="statistics-icon"><i class="fa fa-smile-o color-3"></i>
               </div>
               <div class="statistics-content">
-                <h5> <span data-count="1200" class="statistics-count">1200</span></h5><span>Happy Clients</span>
+                <h5> <span data-count="1200" class="statistics-count">1200</span></h5><span>Evaluation Received</span>
               </div>
             </div>
           </div>
@@ -255,7 +136,7 @@
               <div class="statistics-icon"><i class="fa fa-hourglass-start color-5"></i>
               </div>
               <div class="statistics-content">
-                <h5><span data-count="8000" class="statistics-count">8000</span></h5><span>Hours of Work</span>
+                <h5><span data-count="8000" class="statistics-count">8000</span></h5><span>Evaluation Remaining</span>
               </div>
             </div>
           </div>
@@ -265,7 +146,7 @@
               <div class="statistics-icon"><i class="fa fa-coffee color-4"></i>
               </div>
               <div class="statistics-content">
-                <h5><span data-count="4000" class="statistics-count">4000</span></h5><span>Cup of Coffee</span>
+                <h5><span data-count="4000" class="statistics-count">4000</span></h5><span>Total Lecturer</span>
               </div>
             </div>
             </div>
@@ -275,219 +156,45 @@
        </div>
     </section>
     <!-- statistics end -->
-    <!-- Services Start -->
-    <section id="services" class="services-section section-space-padding">
+    <!-- Login Start -->
+    <section id="login" class="call-to-action section-space-padding text-center">
         <div class="container">
-           <div class="row">
+            <div class="row">
                 <div class="col-sm-12">
                     <div class="section-title">
-                        <h2>My Services.</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                        <h2>Login</h2>                       
                     </div>
+
+
                 </div>
             </div>
-            
             <div class="row">
-            
-            <div class="col-md-4 col-sm-6">
-				<div class="services-detail">
-					<i class="fa fa-mobile color-1"></i>
-					<h3>Mobile Design</h3>
-					<hr>
-					<p>Rolling is a clean and beautiful template with every must features. You can use it for many purpose in website.</p>
-				</div>
-			</div>
 
-			<div class="col-md-4 col-sm-6">
-				<div class="services-detail">
-					<i class="fa fa-tablet color-2"></i>
-					<h3>Tablet Design</h3>
-					<hr>
-					<p>Rolling is a clean and beautiful template with every must features. You can use it for many purpose in website.</p>
-				</div>
-			</div>
+                <div class="col-sm-4 col-sm-offset-2">
+					<div class="form-group">
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Login ID" ></asp:TextBox>
+				    	
+				    </div>
+                </div>
+							
+                <div class="col-sm-4">
+				    <div class="form-group">
+					    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Password"></asp:TextBox>
+				    </div>
+                </div>
 
-			<div class="col-md-4 col-sm-6">
-				<div class="services-detail">
-					<i class="fa fa-code color-3"></i>
-					<h3>Clean Code</h3>
-					<hr>
-					<p>Rolling is a clean and beautiful template with every must features. You can use it for many purpose in website.</p>
-				</div>
-			</div>
-            
-            <div class="col-md-4 col-sm-6">
-				<div class="services-detail">
-					<i class="fa fa-support color-4"></i>
-					<h3>Full Support</h3>
-					<hr>
-					<p>Rolling is a clean and beautiful template with every must features. You can use it for many purpose in website.</p>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6">
-				<div class="services-detail">
-					<i class="fa fa-html5 color-5"></i>
-					<h3>HTML5 Design</h3>
-					<hr>
-					<p>Rolling is a clean and beautiful template with every must features. You can use it for many purpose in website.</p>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-6">
-				<div class="services-detail">
-					<i class="fa fa-ge color-6"></i>
-					<h3>CSS3 Design</h3>
-					<hr>
-					<p>Rolling is a clean and beautiful template with every must features. You can use it for many purpose in website.</p>
-				</div>
-			</div>
-            
-            </div>
-        </div>
-    </section>
-    <!-- Services End -->
-    <!-- Call to Action Start -->
-    <section class="call-to-action section-space-padding text-center">
-       <div class="container">
-         <div class="row">
-           <div class="col-md-12">   
-             
-             <h2>Are You Looking For Your Business Online Presence?</h2>
-             
-             <div class="text-center margin-top-20">
-          <a class="button button-style button-style-dark button-style-icon fa fa-long-arrow-right smoth-scroll" href="#contact">Contact Me</a>
-            </div>
-            
-            </div>    
-          </div>
-         </div>
-       </section>
-    <!-- Call to Action End -->
-    <!-- Contact Start -->
-    <section id="contact" class="contact-us section-space-padding">
-       <div class="container">
-          <div class="row">
-                <div class="col-sm-12">
-                    <div class="section-title">
-                        <h2>Contact Me.</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    </div>
-                </div>
-            </div>
-            
-            
-           <div class="text-center margin-top-10 margin-bottom-50">
-            <div class="row">
-            
-               <div class="col-md-4 col-sm-4">
-                <div class="contact-us-detail">  
-                 <i class="fa fa-mobile color-6"></i>
-                  <p><a href="tel:+1234567890">+1234 567 890</a></p>
-                 </div>
-                </div>
-               
-               <div class="col-md-4 col-sm-4">
-                <div class="contact-us-detail">
-                 <i class="fa fa-mail-reply color-5"></i>
-                  <p><a href="mailto:name@domain.com">name@domain.com</a></p>
-                 </div>
-                </div>
-                 
-               <div class="col-md-4 col-sm-4">
-                <div class="contact-us-detail">
-                 <i class="fa fa-clock-o color-3"></i>
-                  <p>Mon - Fri 09:00 – 18:00</p>
-                 </div>
-                </div>
-              
-               </div>
-              </div>
-            
-         
-         <div class="row">
-           
-           <div class="col-md-6">   
-                 
-               <div class="row">
-                  <form>
-                    
-					  <div class="col-sm-6">
-						<div class="form-group">
-						  <input type="text" id="name" class="form-control" placeholder="Your Name">
-						 </div>
-                        </div>
-								
-                       <div class="col-sm-6">
-					    <div class="form-group">
-						 <input type="email" id="email" class="form-control" placeholder="Your Email">
-						 </div>
-                        </div>
-                        
-                        <div class="col-sm-6">
-						  <div class="form-group">
-							<input type="text" id="website" class="form-control" placeholder="Your Website">
-						   </div>
-                          </div>
-                          
-                        <div class="col-sm-6">
-						  <div class="form-group">
-							<input type="text" id="address" class="form-control" placeholder="Where are You From?">
-						   </div>
-                          </div>
-								
-                         <div class="col-sm-12">
-						  <select id="subject" class="form-group form-control">
-							<option value="" selected disabled>Subject</option>
-							<option>Website Design & Development</option>
-							<option>Wordpress Development</option>
-							<option>Search Engine Optimization</option>
-                            <option>Mobile Website</option>
-							<option>I Want to General Talk</option>
-                            <option>Other</option>
-						   </select>
-                          </div>
-								
-                       <div class="col-sm-12">
-					    <div class="textarea-message form-group">
-					      <textarea id="message" class="textarea-message form-control" placeholder="Your Message" rows="5"></textarea>
-						  </div>
-                         </div>
+                 <div class="col-sm-12">
+                 <asp:Button ID="Button1" runat="server" Text="Button" CssClass="button button-style button-style-dark button-style-icon fa fa-key "></asp:Button>				    
                    
-                   
-                    <div class="text-center">      
-		   <button type="submit" class="button button-style button-style-dark button-style-icon fa fa-long-arrow-right text-center">Submit</button>
-	                  </div>
-                       
-                  </form>
-                   
-				</div>
-               </div>
-            
-            
-            <div class="col-md-6">   
-              <div id="my-address" class="map space-set">
-              <p>Map will not be display without Internet Connection.</p>
-            </div>
-           </div>
-           
-        
-        </div>
-       </div>
-       
-      <div class="margin-top-80"> 
-       <ul class="social-icon">
-         <li><a href="#" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
-         <li><a href="#" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
-         <li><a href="#" target="_blank" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
-         <li><a href="#" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
-         <li><a href="#" target="_blank" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
-       </ul>
-      </div>
-       
+                </div>
+
+            </div>         
+     
      </section>
-    <!-- Contact End -->
-    <!-- Footer Start -->
+    <!-- Login End -->    
+   
+   
+    <!-- Footer Start 
     <footer class="footer-section">
         <div class="container">
             <div class="row">
