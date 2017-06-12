@@ -63,7 +63,7 @@
                                         <li><a class="smoth-scroll" href="#contact">Contact</a>
                                         </li>
 
-                                        <li><a class="smoth-scroll" href="#logout">Logout</a>
+                                        <li><asp:LinkButton class="smoth-scroll" ID="LinkButton1" runat="server" OnClick="LinkButton1_OnClick">Logout</asp:LinkButton>
                                         </li>   
 
 

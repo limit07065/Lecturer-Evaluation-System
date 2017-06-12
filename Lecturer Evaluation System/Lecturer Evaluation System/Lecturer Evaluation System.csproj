@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -79,6 +80,7 @@
     <Content Include="js\scripts.js" />
     <Content Include="Lecturer.aspx" />
     <Content Include="Student.aspx" />
+    <Content Include="viewClassReport.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -130,6 +132,13 @@
     </Compile>
     <Compile Include="User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
+    </Compile>
+    <Compile Include="viewClassReport.aspx.cs">
+      <DependentUpon>viewClassReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewClassReport.aspx.designer.cs">
+      <DependentUpon>viewClassReport.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -111,12 +111,14 @@
 							
                 <div class="col-sm-4">
 				    <div class="form-group">
-					    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Password"></asp:TextBox>
+					    <asp:TextBox ID="TextBox2" TextMode="Password" runat="server" CssClass="form-control" placeholder="Password"></asp:TextBox>
 				    </div>
                 </div>
 
                  <div class="col-sm-12">
-                 <asp:Button ID="Button1" runat="server" Text="Button" CssClass="button button-style button-style-dark button-style-icon fa fa-key "></asp:Button>				    
+                 <asp:Button ID="Button1" runat="server" Text="Login" 
+                         CssClass="button button-style button-style-dark button-style-icon fa fa-key " 
+                         onclick="Button1_Click"></asp:Button>				    
                    
                 </div>
 

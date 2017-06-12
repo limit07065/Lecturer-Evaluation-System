@@ -13,5 +13,11 @@ namespace Lecturer_Evaluation_System
         {
 
         }
+
+        protected void LinkButton1_OnClick(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("/Default.aspx");
+        }
     }
 }
