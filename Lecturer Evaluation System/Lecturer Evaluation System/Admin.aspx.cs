@@ -95,6 +95,7 @@ namespace Lecturer_Evaluation_System
                         {
                             btnActivate.Visible = false;
                             activationDiv.InnerHtml = "This semester is activated";
+                            
                         }
                         else
                         {

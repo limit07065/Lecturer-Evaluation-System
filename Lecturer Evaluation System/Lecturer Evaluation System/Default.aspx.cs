@@ -29,53 +29,54 @@ namespace Lecturer_Evaluation_System
             if (Session["error"] != null)
             {
                 Label1.Text = Session["error"].ToString();
+            }
 
 
 
-                using (con = new SqlConnection(ConnectionString))
+            using (con = new SqlConnection(ConnectionString))
+            {
+                cmd = new SqlCommand("getActiveSemesterStatistic", con);
+
+                try
                 {
-                    cmd = new SqlCommand("getActiveSemesterStatistic", con);
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                    try
+                    while (reader.Read())
                     {
-                        con.Open();
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            totalEnrolled = int.Parse(reader["totalEnrolled"].ToString());
-                            totalRated = int.Parse(reader["totalRated"].ToString());
-                            totalNotRated = totalEnrolled - totalRated;
-                        }
+                        totalEnrolled = int.Parse(reader["totalEnrolled"].ToString());
+                        totalRated = int.Parse(reader["totalRated"].ToString());
+                        totalNotRated = totalEnrolled - totalRated;
                     }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.Message);
-                    }
-                    finally { con.Close(); }
-
-                    try
-                    {
-                        con.Open();
-                        cmd = new SqlCommand("getLecturerNumber", con);
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            totalLecturer = int.Parse(reader["Number"].ToString());
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.Message);
-                    }
-                    finally { con.Close(); }
-
-
-
                 }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+                finally { con.Close(); }
+
+                try
+                {
+                    con.Open();
+                    cmd = new SqlCommand("getLecturerNumber", con);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        totalLecturer = int.Parse(reader["Number"].ToString());
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+                finally { con.Close(); }
+
+
+
             }
         }
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -110,7 +111,7 @@ namespace Lecturer_Evaluation_System
                     }
                     finally { con.Close(); }
                     redirectBasedOnUserType(Convert.ToInt32(Session["userType"]));
-                    
+
                 }
             }
         }
@@ -119,7 +120,7 @@ namespace Lecturer_Evaluation_System
         protected void invalidLogin()
         {
             Session["error"] = "Invalid ID or password";
-            Response.Redirect("/Default.aspx#login");            
+            Response.Redirect("/Default.aspx#login");
         }
 
 

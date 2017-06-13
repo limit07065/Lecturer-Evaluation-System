@@ -4,8 +4,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <section id="Lecturer" class="call-to-action section-space-padding text-center home-section"
+   <section id="Admin" class="call-to-action section-space-padding text-center home-section"
         style="background: #fafffb">
+        <div class="container">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="True">
@@ -17,14 +18,14 @@
                         OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" OnDataBound="DropDownList1_DataBound">
                     </asp:DropDownList><br /><br />
                 <span id="activationDiv" runat="server"></span>
-                <asp:Button ID="btnActivate" runat="server" class="btn-default btn-success" Text="Activate this semester" OnClick="btnActivate_Click" Visible="False"></asp:Button>
+                <asp:Button ID="btnActivate" runat="server" CssClass=" btn btn-success" Text="Activate this semester" OnClick="btnActivate_Click" Visible="False"></asp:Button>
                 </div>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
                     SelectCommand="SELECT [semesterID], [semesterName] FROM [Semester]"></asp:SqlDataSource>
                 <div class="col-sm-12 padding-top-20">
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True"
                         EmptyDataText="<center>Select semester to view</center>" BackColor="White" BorderColor="#CCCCCC"
-                        BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+                        BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" CssClass="table table-responsive">
                         <Columns>
                             <asp:TemplateField HeaderText="Class Name">
                                 <ItemTemplate>
@@ -51,5 +52,6 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+        </div>
     </section>
 </asp:Content>

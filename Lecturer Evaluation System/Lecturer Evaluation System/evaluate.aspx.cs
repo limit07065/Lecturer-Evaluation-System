@@ -12,18 +12,19 @@ namespace Lecturer_Evaluation_System
 {
     public partial class evaluate : System.Web.UI.Page
     {
-       
+
         List<RadioButton> rbs = new List<RadioButton>();
         protected static string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         protected SqlConnection con;
         protected SqlCommand cmd;
         protected int rateID;
-        protected int[] qValues = new int [5]{0,0,0,0,0}; 
-        protected List<string> question  = new List<string>();
+        int[] qValues = { 1, 1, 1, 1, 1 };        
+        protected List<string> question; 
+       
 
         protected void Page_Load(object sender, EventArgs e)
-        { 
-            
+        {
+           
             if (Session["userType"] == null)
             {
                 Response.Redirect("~/default.aspx");
@@ -36,12 +37,18 @@ namespace Lecturer_Evaluation_System
             }
             if (!IsPostBack)
             {
+                //initialize variable
+                
+                Session["exist"] = 0;                            
+
+                question = new List<string>();
                 question.Add("q1");
                 question.Add("q2");
                 question.Add("q3");
                 question.Add("q4");
                 question.Add("q5");
 
+                
                 rbs.Add(RadioButton1);
                 rbs.Add(RadioButton2);
                 rbs.Add(RadioButton3);
@@ -105,9 +112,9 @@ namespace Lecturer_Evaluation_System
 
         }
 
-        protected int getEvaluation()
+        protected void getEvaluation()
         {
-            int exist = 0;
+            
             using (con = new SqlConnection(ConnectionString))
             {
                 // get previous evaluation
@@ -128,9 +135,9 @@ namespace Lecturer_Evaluation_System
                          qValues[2] = Convert.ToInt32(reader["question3"]);
                          qValues[3] = Convert.ToInt32(reader["question4"]);
                          qValues[4] = Convert.ToInt32(reader["question5"]);
-                        rateID = Convert.ToInt32(reader["rateID"]);
-                        String comment = "";                        
-
+                        rateID = Convert.ToInt16(reader["rateID"]);
+                        String comment = "";
+                       
                         
 
                         if (reader["comment"] != null)
@@ -139,11 +146,11 @@ namespace Lecturer_Evaluation_System
                         }
                        
                         //show previous evaluation
-                        showChoice(question);
+                        showChoice();
                         TextArea1.Text = comment;
-                        exist = 1;
+                        Session["exist"] = 1;
 
-
+                       
                     }
 
 
@@ -155,16 +162,11 @@ namespace Lecturer_Evaluation_System
                 }
                 finally { con.Close(); }
             }
-            return exist;
+            
         }     
 
-        protected void showChoice(List<string> question)
+        protected void showChoice()
         {
-         
-           
-            
-            
-
             for (int i = 0; i < question.Count; i++)
             {
                 foreach (RadioButton radioButton in rbs)
@@ -181,34 +183,15 @@ namespace Lecturer_Evaluation_System
 
 
         }
-
-        private string getRadioValue(ControlCollection clts, string groupName)
-        {
-            string ret = "";
-            foreach (Control ctl in clts)
-            {
-                if (ctl.Controls.Count != 0)
-                {
-                    if (ret == "")
-                        ret = getRadioValue(ctl.Controls, groupName);
-                }
-
-                if (ctl.ToString() == "System.Web.UI.WebControls.RadioButton")
-                {
-                    RadioButton rb = (RadioButton)ctl;
-                    if (rb.GroupName == groupName && rb.Checked == true)
-                        ret = rb.Attributes["Value"];
-                }
-            }
-            return ret;
-        }
+        
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            int exist = getEvaluation();
-            if (exist == 1)
+            int exist = Convert.ToInt32(Session["exist"]);
+            
+            if (exist==1)
                 updateEvaluation();
-            else
+            else if(exist==0)
                 addEvaluation();
 
         }
@@ -226,36 +209,32 @@ namespace Lecturer_Evaluation_System
                     avg += qValues[i];
                 }
                 avg/=5;
-                cmd = new SqlCommand("updateEvaluation", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@question1", qValues[0]);
-                cmd.Parameters.AddWithValue("@question2", qValues[1]);
-                cmd.Parameters.AddWithValue("@question3", qValues[2]);
-                cmd.Parameters.AddWithValue("@question4", qValues[3]);
-                cmd.Parameters.AddWithValue("@question5", qValues[4]);
-                cmd.Parameters.AddWithValue("@comment", TextArea1.Text);
-                cmd.Parameters.AddWithValue("@average",avg );
-                cmd.Parameters.AddWithValue("@rateID", rateID);
                
-
                 try
                 {
                     con.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    //display output to aspx
-                    while (reader.Read())
-                    {
-                        Response.Redirect("~/Default.aspx"); 
-                    }
 
-
-
+                    cmd = new SqlCommand("updateEvaluation", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@question1", qValues[0]);
+                    cmd.Parameters.AddWithValue("@question2", qValues[1]);
+                    cmd.Parameters.AddWithValue("@question3", qValues[2]);
+                    cmd.Parameters.AddWithValue("@question4", qValues[3]);
+                    cmd.Parameters.AddWithValue("@question5", qValues[4]);
+                    cmd.Parameters.AddWithValue("@comment", TextArea1.Text);
+                    cmd.Parameters.AddWithValue("@average",avg );
+                    cmd.Parameters.AddWithValue("@rateID", rateID);
+                    cmd.ExecuteNonQuery();                   
                 }
                 catch (Exception ex)
                 {
                     Console.Write(ex.Message);
                 }
-                finally { con.Close(); }
+                finally
+                {
+                    con.Close();                   
+                }
+              
             }
         }
 
@@ -312,14 +291,19 @@ namespace Lecturer_Evaluation_System
             {
                 foreach (RadioButton radioButton in rbs)
                 {
-
-                    if (radioButton.GroupName.Equals(question.ElementAt(i)) && radioButton.Checked==true)
+                    
+                    if (radioButton.GroupName.Equals(question.ElementAt(i)) )
                     {
-                        qValues[i] = Convert.ToInt32(radioButton.Attributes["value"]);
+                        if (radioButton.Checked)
+                        {
+                            qValues[i] = Convert.ToInt32(radioButton.Attributes["value"]);
+                           // Label4.Text += qValues[i].ToString();
+                        }
                     }
                 }
 
             }
+            Session["qValues"] = qValues;           
 
         }
     }

@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section id="student" class="call-to-action section-space-padding text-center home-section"
-        style="background: #fafffb;">
+        style="background: #fafffb;height:130%">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -14,6 +14,7 @@
                   <h2>Evaluation Form</h2>                       
                 </div>
             </div>
+            
             <div class="col-sm-2 col-sm-offset-1 text-left ">
                 <asp:Label ID="Label1" runat="server" Text="Label">Lecturer Name:</asp:Label>
                
@@ -35,6 +36,7 @@
             <div class="col-sm-2 text-left">
                 <asp:Label ID="LabelSemester" runat="server" ></asp:Label>
             </div>
+
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="row  text-left" >
                     <div class="col-xs-12 form-control">
@@ -86,18 +88,19 @@
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton25" runat="server" GroupName="q5" value="5"></asp:RadioButton></div>
                         </div>
 
-                        <div class="col-xs-12 form-control" style="padding-bottom:100px">  
+                        <div class="col-xs-12 form-control" style="height:120px">  
                           
-                                <div class="col-xs-12"><b>6. FeedBack</b> <br /> <br /></div>
+                                <div class="col-xs-12" ><b>6. FeedBack</b> <br /> <br /></div>
                                
-                                <div class="col-xs-12"><b>       
-                                    <asp:TextBox ID="TextArea1" TextMode="multiline"  runat="server" CssClass="col-xs-12" />
+                                <div class="col-xs-12"  ><b>       
+                                    <asp:TextBox ID="TextArea1" TextMode="multiline"  runat="server" Height="70" CssClass="col-xs-12" />
                                     </b></div>
                            
                      
                         </div>
-<asp:Button ID="Button1" runat="server" Text="Submit" onclick="Button1_Click"></asp:Button>
-
+                         <div class="col-xs-12 form-control text-center" style="height:120px"> 
+                        <asp:Button ID="Button1" runat="server" Text="Submit" onclick="Button1_Click" CssClass="button button-style button-style-dark center-block" ></asp:Button>
+                        </div>
 
 
                         
