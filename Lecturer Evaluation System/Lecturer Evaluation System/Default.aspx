@@ -48,7 +48,7 @@
               <div class="statistics-icon"><i class="fa fa-check-square-o color-1"></i>
               </div>
               <div class="statistics-content">
-                <h5><span data-count="2025" class="statistics-count">2025</span></h5><span>Expected Total Evaluations</span>
+                <h5><span data-count="<%= totalEnrolled %>" class="statistics-count"><%= totalEnrolled %></span></h5><span>Expected Total Evaluations</span>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
               <div class="statistics-icon"><i class="fa fa-smile-o color-3"></i>
               </div>
               <div class="statistics-content">
-                <h5> <span data-count="1200" class="statistics-count">1200</span></h5><span>Evaluation Received</span>
+                <h5> <span data-count="<%= totalRated %>" class="statistics-count"><%= totalRated %></span></h5><span>Evaluation Received</span>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
               <div class="statistics-icon"><i class="fa fa-hourglass-start color-5"></i>
               </div>
               <div class="statistics-content">
-                <h5><span data-count="8000" class="statistics-count">8000</span></h5><span>Evaluation Remaining</span>
+                <h5><span data-count="<%= totalNotRated %>" class="statistics-count"><%= totalNotRated %></span></h5><span>Evaluation Remaining</span>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@
               <div class="statistics-icon"><i class="fa fa-coffee color-4"></i>
               </div>
               <div class="statistics-content">
-                <h5><span data-count="4000" class="statistics-count">4000</span></h5><span>Total Lecturer</span>
+                <h5><span data-count="<%= totalLecturer %>" class="statistics-count"><%= totalLecturer %></span></h5><span>Total Lecturer</span>
               </div>
             </div>
             </div>
