@@ -45,7 +45,7 @@ namespace Lecturer_Evaluation_System
                             XPointMember[1] = YPointMember[1].ToString() + " - Not Rated";
                         }
                     }
-
+                    Label1.Text = reader["totalEnrolled"].ToString();
                     Chart1.Series[0].Points.DataBindXY(XPointMember, YPointMember);
 
                     //Setting width of line  

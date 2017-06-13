@@ -4,19 +4,31 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
-        <Columns>
-            <asp:TemplateField HeaderText="Class Name">
-                <ItemTemplate>
-                    <a href='<%# DataBinder.Eval(Container.DataItem, "classID", "viewClassReport.aspx?classID={0}") %>'><%# DataBinder.Eval(Container.DataItem, "className") %></a>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField DataField="averageMarks" HeaderText="Marks" InsertVisible="False"
-                ReadOnly="True" SortExpression="averageMarks" />
-            <asp:BoundField DataField="totalRated" HeaderText="Number of student rated" InsertVisible="False"
-                ReadOnly="True" SortExpression="totalRated" />
-            <asp:BoundField DataField="totalEnrolled" HeaderText="Number of student enrolled"
-                InsertVisible="False" ReadOnly="True" SortExpression="totalEnrolled" />
-        </Columns>
-    </asp:GridView>
+    <section id="Lecturer" class="call-to-action section-space-padding text-center home-section"
+        style="background: #fafffb">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                 <div class="section-title">
+                        <h2>Student Evaluation</h2>                       
+                    </div>
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-responsive">
+                        <Columns>
+                            <asp:TemplateField HeaderText="Class Name">
+                                <ItemTemplate>
+                                    <a href='<%# DataBinder.Eval(Container.DataItem, "classID", "viewClassReport.aspx?classID={0}") %>'><%# DataBinder.Eval(Container.DataItem, "className") %></a>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="averageMarks" HeaderText="Marks" InsertVisible="False"
+                                ReadOnly="True" SortExpression="averageMarks" />
+                            <asp:BoundField DataField="totalRated" HeaderText="Number of student rated" InsertVisible="False"
+                                ReadOnly="True" SortExpression="totalRated" />
+                            <asp:BoundField DataField="totalEnrolled" HeaderText="Number of student enrolled"
+                                InsertVisible="False" ReadOnly="True" SortExpression="totalEnrolled" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+    </section>
 </asp:Content>
