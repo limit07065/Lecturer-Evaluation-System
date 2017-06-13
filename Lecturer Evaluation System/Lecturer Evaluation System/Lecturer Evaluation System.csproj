@@ -59,6 +59,7 @@
     <Content Include="css\plugin.css" />
     <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
+    <Content Include="evaluate.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\bg\bg.jpg" />
     <Content Include="images\bg\me.jpg" />
@@ -103,6 +104,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="evaluate.aspx.cs">
+      <DependentUpon>evaluate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="evaluate.aspx.designer.cs">
+      <DependentUpon>evaluate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Lecturer.aspx.cs">
       <DependentUpon>Lecturer.aspx</DependentUpon>

@@ -7,27 +7,40 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using System.Web.UI.DataVisualization.Charting;
 
 namespace Lecturer_Evaluation_System
 {
-    public partial class viewClassReport : System.Web.UI.Page
-    {
+    public partial class evaluate : System.Web.UI.Page{
+    
         protected static string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         protected SqlConnection con;
         protected SqlCommand cmd;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (con = new SqlConnection(ConnectionString))
+            //forward user other than student
+            if (Session["userID"] != "0")
             {
-                // To populate data into Chart
-                string[] XPointMember = new string[2];
-                int[] YPointMember = new int[2];
+                Response.Redirect("~/Error403.aspx");
+            }
 
-                cmd = new SqlCommand("viewClassLecturer", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@lecturerID", '1'); // get from session
+            //forward user who type in directly
+            try
+            {
+                String url = Request.UrlReferrer.OriginalString;
+            }
+            catch (NullReferenceException enull)
+            {
+                Response.Redirect("~/Error403.aspx");
+            }
+
+            String classID = (string)Request.QueryString["classID"];
+            using (con = new SqlConnection(ConnectionString))
+            {               
+                // get class detail
+                cmd = new SqlCommand("viewClass", con);
+                cmd.CommandType = CommandType.StoredProcedure;                
+                cmd.Parameters.AddWithValue("@classID", classID);
 
                 try
                 {
@@ -36,6 +49,33 @@ namespace Lecturer_Evaluation_System
 
                     while (reader.Read())
                     {
+                        //display class info to aspx
+                        LabelLecturer.Text = (string) reader["lecturerName"];
+                        LabelSemester.Text = (string)reader["semester"];
+                        LabelClass.Text = (string)reader["className"];                        
+                       
+                    }                   
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+                finally { con.Close(); }
+
+                // get previous evaluation
+                cmd = new SqlCommand("viewEvaluation", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@studentID", Session["userID"]);
+                cmd.Parameters.AddWithValue("@classID", classID);                
+
+                try
+                {
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        //display output to aspx
                         if (reader["classID"].ToString().Equals(Request.QueryString["classID"].ToString()))
                         {
                             YPointMember[0] = int.Parse(reader["totalRated"].ToString());
@@ -45,13 +85,13 @@ namespace Lecturer_Evaluation_System
                             XPointMember[1] = YPointMember[1].ToString() + " - Not Rated";
                         }
                     }
-                   
+
                     Chart1.Series[0].Points.DataBindXY(XPointMember, YPointMember);
 
                     //Setting width of line  
                     Chart1.Series[0].BorderWidth = 10;
                     //setting Chart type   
-                    Chart1.Series[0].ChartType = SeriesChartType.Pie; 
+                    Chart1.Series[0].ChartType = SeriesChartType.Pie;
                 }
                 catch (Exception ex)
                 {

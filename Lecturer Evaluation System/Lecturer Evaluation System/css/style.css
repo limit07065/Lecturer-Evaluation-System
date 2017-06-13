@@ -1562,3 +1562,9 @@ tbody:hover > tr:hover td {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
+
+tbody>tr:hover> td,tbody>tr:hover>td>a
+{
+    background:#72d476;
+    color:White!important;
+}
