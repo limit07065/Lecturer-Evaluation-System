@@ -15,9 +15,11 @@ namespace Lecturer_Evaluation_System
         protected static string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         protected SqlConnection con;
         protected SqlCommand cmd;
+        protected int totalEnrolled, totalRated, totalNotRated, totalLecturer;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["userType"] != null)
             {
                 int usertype = Convert.ToInt32(Session["userType"]);
@@ -27,6 +29,51 @@ namespace Lecturer_Evaluation_System
             if (Session["error"] != null)
             {
                 Label1.Text = Session["error"].ToString();
+
+
+
+                using (con = new SqlConnection(ConnectionString))
+                {
+                    cmd = new SqlCommand("getActiveSemesterStatistic", con);
+
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            totalEnrolled = int.Parse(reader["totalEnrolled"].ToString());
+                            totalRated = int.Parse(reader["totalRated"].ToString());
+                            totalNotRated = totalEnrolled - totalRated;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write(ex.Message);
+                    }
+                    finally { con.Close(); }
+
+                    try
+                    {
+                        con.Open();
+                        cmd = new SqlCommand("getLecturerNumber", con);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            totalLecturer = int.Parse(reader["Number"].ToString());
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write(ex.Message);
+                    }
+                    finally { con.Close(); }
+
+
+
+                }
             }
         }
 

@@ -93,13 +93,13 @@ namespace Lecturer_Evaluation_System
                     {
                         if (reader["semesterID"].ToString().Equals(DropDownList1.SelectedValue.ToString()))
                         {
-                            btnActivate.Enabled = false;
+                            btnActivate.Visible = false;
                             activationDiv.InnerHtml = "This semester is activated";
                         }
                         else
                         {
                             activationDiv.InnerHtml = "";
-                            btnActivate.Enabled = true;
+                            btnActivate.Visible = true;
                         }
                     }
                 }
