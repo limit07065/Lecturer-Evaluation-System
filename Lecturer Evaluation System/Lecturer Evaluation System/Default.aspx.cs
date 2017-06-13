@@ -37,30 +37,11 @@ namespace Lecturer_Evaluation_System
                         con.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
 
-                        if (reader.Read() != null)
+                        if (reader.Read() != false)
                         {
                             Session["userID"] = reader["userID"].ToString();
                             Session["userType"] = reader["userType"].ToString();
                             Session["fullname"] = reader["fullname"].ToString();
-
-                            switch (Session["userType"].ToString())
-                            {
-                                case "0":
-                                    Response.Redirect("/Student.aspx");
-                                    break;
-
-                                case "1":
-                                    Response.Redirect("/Lecturer.aspx");
-                                    break;
-
-                                case "2":
-                                    Response.Redirect("/Admin.aspx");
-                                    break;
-
-                                default:
-                                    Response.Redirect("/Default.aspx");
-                                    break;
-                            }
                         }
                     }
                     catch (Exception ex)
@@ -69,6 +50,24 @@ namespace Lecturer_Evaluation_System
                     }
                     finally { con.Close(); }
 
+                    switch (Session["userType"].ToString())
+                    {
+                        case "0":
+                            Response.Redirect("/Student.aspx");
+                            break;
+
+                        case "1":
+                            Response.Redirect("/Lecturer.aspx");
+                            break;
+
+                        case "2":
+                            Response.Redirect("/Admin.aspx");
+                            break;
+
+                        default:
+                            Response.Redirect("/Default.aspx");
+                            break;
+                    }
                 }
             }
         }
