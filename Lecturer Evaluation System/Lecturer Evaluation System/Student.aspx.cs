@@ -11,7 +11,17 @@ namespace Lecturer_Evaluation_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        protected void evaluate(object sender, EventArgs e)
+        {
+            Response.Redirect("~/viewClassReport.aspx?");
+            Session["userID"] = reader["userID"].ToString();
+            Session["userType"] = reader["userType"].ToString();
+            Session["fullname"] = reader["fullname"].ToString();
         }
     }
+
+    
 }

@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <section id="Lecturer" class="call-to-action section-space-padding text-center home-section"
+    <section id="lecturer" class="call-to-action section-space-padding text-center home-section"
         style="background: #fafffb">
         <div class="container">
             <div class="row">
