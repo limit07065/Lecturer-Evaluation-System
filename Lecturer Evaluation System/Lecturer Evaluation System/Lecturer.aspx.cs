@@ -26,7 +26,7 @@ namespace Lecturer_Evaluation_System
                 cmd.Parameters.AddWithValue("@lecturerID", Session["userID"].ToString()); 
 
                 DataSet ds = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter("viewClassLecturer", con);
+                SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
                 da.Fill(ds);
 
