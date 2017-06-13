@@ -12,9 +12,9 @@
             <div class="row">
                 <div class="col-sm-12">
                  <div class="section-title">
-                        <h2>*Class Name*</h2>                       
+                        <h2><asp:Label ID="lblClassName" runat="server"></asp:Label></h2>                       
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <asp:Chart ID="Chart1" runat="server" AlternateText="Chart for number of students who haven't rate">
                                 <Series>
                                     <asp:Series Name="Series1" ChartType="Pie">
@@ -26,12 +26,27 @@
                                 </ChartAreas>
                             </asp:Chart>
                             <p>
-                                Total Students: <asp:Label runat="server" ID="Label1"></asp:Label>
+                                Total Students: <asp:Label runat="server" ID="lblTotalStudent"></asp:Label>
                             </p>
+                    </div>
 
+                    <div class="col-sm-4">
+                        <asp:Chart ID="Chart2" runat="server" AlternateText="Chart for average mark of the 5 questions">
+                                <Series>
+                                    <asp:Series Name="Series1" ChartType="Pie">
+                                    </asp:Series>
+                                </Series>
+                                <ChartAreas>
+                                    <asp:ChartArea Name="ChartArea1">
+                                    </asp:ChartArea>
+                                </ChartAreas>
+                            </asp:Chart>
+                            <p>
+                                Total Students Rated: <asp:Label runat="server" ID="lblTotalRated"></asp:Label>
+                            </p>
                     </div>
                         
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                     <h3>Student Comment</h3>
                     <hr />
                      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-responsive">

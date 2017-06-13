@@ -43,9 +43,12 @@ namespace Lecturer_Evaluation_System
 
                             YPointMember[1] = int.Parse(reader["totalEnrolled"].ToString()) - int.Parse(reader["totalRated"].ToString());
                             XPointMember[1] = YPointMember[1].ToString() + " - Not Rated";
+
+                            lblClassName.Text = reader["className"].ToString();
+                            lblTotalStudent.Text = reader["totalEnrolled"].ToString();
                         }
                     }
-                    Label1.Text = reader["totalEnrolled"].ToString();
+                    
                     Chart1.Series[0].Points.DataBindXY(XPointMember, YPointMember);
 
                     //Setting width of line  
