@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section id="student" class="call-to-action section-space-padding text-center home-section"
-        style="background: #fafffb">
+        style="background: #fafffb;">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -14,23 +14,91 @@
                   <h2>Evaluation Form</h2>                       
                 </div>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-2 col-sm-offset-1 text-left ">
                 <asp:Label ID="Label1" runat="server" Text="Label">Lecturer Name:</asp:Label>
-                <asp:Label ID="LabelLecturer" runat="server" ></asp:Label>
+               
+            </div>
+            <div class="col-sm-8 text-left">
+                <asp:Label ID="LabelLecturer" runat="server" ></asp:Label>            
             </div>
 
-            <div class="col-sm-6">
-                <asp:Label ID="Label2" runat="server" Text="Label">Class:</asp:Label>
+            <div class="col-sm-2 col-sm-offset-1 text-left">
+                <asp:Label ID="Label2" runat="server" >Class:</asp:Label>
+            </div>
+            <div class="col-sm-4 text-left">
                 <asp:Label ID="LabelClass" runat="server" ></asp:Label>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-2 text-right">
                 <asp:Label ID="Label4" runat="server" Text="Label">Semester:</asp:Label>
+            </div>
+            <div class="col-sm-2 text-left">
                 <asp:Label ID="LabelSemester" runat="server" ></asp:Label>
             </div>
             <div class="col-sm-10 col-sm-offset-1">
-                <div class="form-group>
-                    
+                <div class="row  text-left" >
+                    <div class="col-xs-12 form-control">
+                        <div class="col-xs-7"><h4>Criteria</h4></div>
+                        <div class="col-xs-1"><h4>1</h4></div>
+                        <div class="col-xs-1"><h4>2</h4></div>
+                        <div class="col-xs-1"><h4>3</h4></div>
+                        <div class="col-xs-1"><h4>4</h4></div>
+                        <div class="col-xs-1"><h4>5</h4></div>
+                    </div>
+                    <div class="col-xs-12 form-control">
+                        <div class="col-xs-7"><b>1. Teaching</b></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton1" runat="server" GroupName="q1"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton6" runat="server" GroupName="q1"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton7" runat="server" GroupName="q1"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton8" runat="server" GroupName="q1"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton9" runat="server" GroupName="q1"></asp:RadioButton></div>
+                    </div>
+                     <div class="col-xs-12 form-control">
+                        <div class="col-xs-7"><b>2. Project</b></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton2" runat="server" GroupName="q2"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton3" runat="server" GroupName="q2"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton4" runat="server" GroupName="q2"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton5" runat="server" GroupName="q2"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton10" runat="server" GroupName="q2"></asp:RadioButton></div>
+                    </div>
+                    <div class="col-xs-12 form-control">
+                        <div class="col-xs-7"><b>3. </b></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton11" runat="server" GroupName="q3"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton14" runat="server" GroupName="q3"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton15" runat="server" GroupName="q3"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton16" runat="server" GroupName="q3"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton17" runat="server" GroupName="q3"></asp:RadioButton></div>
+                    </div>
+                    <div class="col-xs-12 form-control">
+                        <div class="col-xs-7"><b>4. Project</b></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton12" runat="server" GroupName="q4"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton18" runat="server" GroupName="q4"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton19" runat="server" GroupName="q4"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton20" runat="server" GroupName="q4"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton21" runat="server" GroupName="q4"></asp:RadioButton></div>
+                    </div>
+                        <div class="col-xs-12 form-control">                   
+                        <div class="col-xs-7"><b>5. Project</b></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton13" runat="server" GroupName="q5"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton22" runat="server" GroupName="q5"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton23" runat="server" GroupName="q5"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton24" runat="server" GroupName="q5"></asp:RadioButton></div>
+                        <div class="col-xs-1"><asp:RadioButton ID="RadioButton25" runat="server" GroupName="q5"></asp:RadioButton></div>
+                        </div>
+
+                        <div class="col-xs-12 form-control" style="padding-bottom:100px">  
+                          
+                                <div class="col-xs-12"><b>6. FeedBack</b> <br /> <br /></div>
+                               
+                                <div class="col-xs-12"><b>       
+                                    <asp:TextBox ID="TextArea1" TextMode="multiline"  runat="server" CssClass="col-xs-12" />
+                                    </b></div>
+                           
+                     
+                        </div>
+
+
+                        
                 </div>
             </div>
              
