@@ -20,7 +20,7 @@
          <div class="row">
                
               <div class="col-md-6 col-sm-12 col-xs-12">
-                <img class="img-responsive" src="images/bg/me.jpg" draggable="false" alt="">
+                <img class="img-responsive" src="images/bg/me.jpg" draggable="false" alt=""/>
               </div>
                 
               <div class="col-md-6 col-sm-12 col-xs-12">
@@ -117,7 +117,7 @@
                  <div class="col-sm-12">
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Login ID is required" ControlToValidate="TextBox1" ForeColor="Red"></asp:RequiredFieldValidator>
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password is required" ControlToValidate="TextBox2" ForeColor="Red"></asp:RequiredFieldValidator><br />
-                 <asp:Label ID="Label1" runat="server" CssClass="center-block"></asp:Label>
+                 <asp:Label ID="Label1" runat="server" CssClass="center-block" ForeColor="Red"></asp:Label>
                  <asp:Button ID="Button1" runat="server" Text="Login" 
                          CssClass="button button-style button-style-dark button-style-icon fa fa-key " 
                          onclick="Button1_Click"></asp:Button>				    

@@ -18,7 +18,16 @@ namespace Lecturer_Evaluation_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["userType"] != null)
+            {
+                int usertype = Convert.ToInt32(Session["userType"]);
+                redirectBasedOnUserType(usertype);
+            }
+
+            if (Session["error"] != null)
+            {
+                Label1.Text = Session["error"].ToString();
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -53,34 +62,40 @@ namespace Lecturer_Evaluation_System
                         Console.Write(ex.Message);
                     }
                     finally { con.Close(); }
-
-                    switch (Session["userType"].ToString())
-                    {
-                        case "0":
-                            Response.Redirect("/Student.aspx");
-                            break;
-
-                        case "1":
-                            Response.Redirect("/Lecturer.aspx");
-                            break;
-
-                        case "2":
-                            Response.Redirect("/Admin.aspx");
-                            break;
-
-                        default:
-                            Response.Redirect("/Default.aspx");
-                            break;
-                    }
+                    redirectBasedOnUserType(Convert.ToInt32(Session["userType"]));
+                    
                 }
             }
         }
 
         //why not triggered ._.
         protected void invalidLogin()
-        {           
-            Label1.Text = "Invalid ID or password";
+        {
+            Session["error"] = "Invalid ID or password";
             Response.Redirect("/Default.aspx#login");            
+        }
+
+
+        protected void redirectBasedOnUserType(int usertype)
+        {
+            switch (Session["userType"].ToString())
+            {
+                case "0":
+                    Response.Redirect("/Student.aspx");
+                    break;
+
+                case "1":
+                    Response.Redirect("/Lecturer.aspx");
+                    break;
+
+                case "2":
+                    Response.Redirect("/Admin.aspx");
+                    break;
+
+                default:
+                    Response.Redirect("/Default.aspx");
+                    break;
+            }
         }
     }
 }
