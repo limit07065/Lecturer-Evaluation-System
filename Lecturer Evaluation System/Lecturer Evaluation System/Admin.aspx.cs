@@ -57,13 +57,11 @@ namespace Lecturer_Evaluation_System
                     con.Open();
 
                     cmd = new SqlCommand("deactivateAllSemester", con);
-
                     cmd.ExecuteNonQuery();
 
-                    cmd = new SqlCommand("activateSemester", con);
+                    cmd = new SqlCommand("activateSemesterById", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@semesterID", DropDownList1.SelectedValue.ToString());
-
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
