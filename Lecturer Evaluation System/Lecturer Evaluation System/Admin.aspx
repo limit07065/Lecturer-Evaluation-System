@@ -4,18 +4,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid padding-top-30">
+   <section id="Lecturer" class="call-to-action section-space-padding text-center home-section"
+        style="background: #fafffb">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="True">
             <ContentTemplate>
                 <div class="col-sm-3 pull-left ">
+                <span>Semester: </span>
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1"
                         DataTextField="semesterName" DataValueField="semesterID" AutoPostBack="True"
                         OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" OnDataBound="DropDownList1_DataBound">
-                    </asp:DropDownList>
-                </div>
-                <div id="activationDiv" class="col-sm-3 pull-right" runat="server">
+                    </asp:DropDownList><br /><br />
+                <span id="activationDiv" runat="server"></span>
+                <asp:Button ID="btnActivate" runat="server" class="btn-default btn-success" Text="Activate this semester" OnClick="btnActivate_Click" Enabled="False"></asp:Button>
                 </div>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
                     SelectCommand="SELECT [semesterID], [semesterName] FROM [Semester]"></asp:SqlDataSource>
@@ -49,5 +51,5 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
-    </div>
+    </section>
 </asp:Content>

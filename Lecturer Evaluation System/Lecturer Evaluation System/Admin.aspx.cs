@@ -19,7 +19,6 @@ namespace Lecturer_Evaluation_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            renderActivationButton();
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,6 +34,8 @@ namespace Lecturer_Evaluation_System
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
                 da.Fill(ds);
+
+                renderActivationButton();
 
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
@@ -68,8 +69,8 @@ namespace Lecturer_Evaluation_System
                 {
                     Console.Write(ex.Message);
                 }
-                finally 
-                { 
+                finally
+                {
                     con.Close();
                     renderActivationButton();
                     UpdatePanel1.Update();
@@ -79,49 +80,34 @@ namespace Lecturer_Evaluation_System
 
         protected void renderActivationButton()
         {
-            StringWriter stringWriter = new StringWriter();
-
-            using (HtmlTextWriter writer = new HtmlTextWriter(stringWriter))
+            using (con = new SqlConnection(ConnectionString))
             {
-                using (con = new SqlConnection(ConnectionString))
+                try
                 {
-                    try
+                    con.Open();
+
+                    cmd = new SqlCommand("getActiveSemester", con);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
                     {
-                        con.Open();
-
-                        cmd = new SqlCommand("getActiveSemester", con);
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        while (reader.Read())
+                        if (reader["semesterID"].ToString().Equals(DropDownList1.SelectedValue.ToString()))
                         {
-                            if (reader["semesterID"].ToString().Equals(DropDownList1.SelectedValue.ToString()))
-                            {
-                                activationDiv.Controls.Clear();
-                                writer.RenderBeginTag(HtmlTextWriterTag.Span);
-                                writer.Write("This semester is activated");
-                                writer.RenderEndTag();
-
-                                activationDiv.InnerHtml = writer.InnerWriter.ToString();
-                            }
-                            else
-                            {
-                                activationDiv.InnerHtml = "";
-                                Button btnActivate = new Button();
-                                btnActivate.Attributes.Add("ID", "btnActivate");
-                                btnActivate.Attributes.Add("class", "btn-default btn-success");
-                                btnActivate.Click += new EventHandler(this.btnActivate_Click);
-                                btnActivate.Text = "Activate this semester";
-
-                                activationDiv.Controls.Add(btnActivate);
-                            }
+                            btnActivate.Enabled = false;
+                            activationDiv.InnerHtml = "This semester is activated";
+                        }
+                        else
+                        {
+                            activationDiv.InnerHtml = "";
+                            btnActivate.Enabled = true;
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.Message);
-                    }
-                    finally { con.Close(); }
                 }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
+                finally { con.Close(); }
             }
         }
     }
