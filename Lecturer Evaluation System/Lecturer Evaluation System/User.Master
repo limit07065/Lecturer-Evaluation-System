@@ -55,7 +55,24 @@
                                 </div>
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li class="active"><a class="smoth-scroll" href="#home">Home <div class="ripple-wrapper"></div></a>
+                                        <li class="active">
+
+                                        <%
+                                            if (Session["userType"] != null)
+                                            {
+                                                switch (Session["userType"].ToString())
+                                                {
+                                                    case "0": Response.Write("<a class='smoth-scroll' href='/Student.aspx'>Home <div class='ripple-wrapper'></div></a>"); break;
+                                                    case "1": Response.Write("<a class='smoth-scroll' href='/Lecturer.aspx'>Home <div class='ripple-wrapper'></div></a>"); break;
+                                                    case "2": Response.Write("<a class='smoth-scroll' href='/Admin.aspx'>Home <div class='ripple-wrapper'></div></a>"); break;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Response.Write("<a class='smoth-scroll' href='#home'>Home <div class='ripple-wrapper'></div></a>");
+                                            }
+                                        %>
+
                                         </li>
 
                                                                                                                    

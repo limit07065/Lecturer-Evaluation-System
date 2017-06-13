@@ -38,12 +38,14 @@ namespace Lecturer_Evaluation_System
 
         protected void evaluate(object sender, EventArgs e)
         {
+
             Session["classID"] = GridView1.SelectedValue.ToString();
             Response.Redirect("~/evaluate.aspx");
             /*Session["userID"] = reader["userID"].ToString();
             Session["userType"] = reader["userType"].ToString();
             Session["fullname"] = reader["fullname"].ToString();
              */
+
         }
   
     }

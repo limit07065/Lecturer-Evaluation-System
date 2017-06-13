@@ -15,7 +15,7 @@ namespace Lecturer_Evaluation_System
         protected static string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         protected SqlConnection con;
         protected SqlCommand cmd;
-
+        /*
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -91,6 +91,6 @@ namespace Lecturer_Evaluation_System
                 }
                 finally { con.Close(); }
             }
-        }
+        }*/
     }
 }
