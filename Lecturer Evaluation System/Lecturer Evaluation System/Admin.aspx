@@ -17,7 +17,7 @@
                         OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" OnDataBound="DropDownList1_DataBound">
                     </asp:DropDownList><br /><br />
                 <span id="activationDiv" runat="server"></span>
-                <asp:Button ID="btnActivate" runat="server" class="btn-default btn-success" Text="Activate this semester" OnClick="btnActivate_Click" Enabled="False"></asp:Button>
+                <asp:Button ID="btnActivate" runat="server" class="btn-default btn-success" Text="Activate this semester" OnClick="btnActivate_Click" Visible="False"></asp:Button>
                 </div>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
                     SelectCommand="SELECT [semesterID], [semesterName] FROM [Semester]"></asp:SqlDataSource>
