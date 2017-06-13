@@ -89,9 +89,9 @@
     </section>
     <!-- statistics end -->
     <!-- Login Start -->
-    <section id="login" class="call-to-action section-space-padding text-center">
-        <div class="container">
-            <div class="row">
+    <section id="login" class="call-to-action section-space-padding text-center home-section" style="background:#fafffb" >
+        <div class="display-table">
+            <div class="display-table-cell">
                 <div class="col-sm-12">
                     <div class="section-title">
                         <h2>Login</h2>                       
@@ -99,8 +99,7 @@
 
 
                 </div>
-            </div>
-            <div class="row">
+            
 
                 <div class="col-sm-4 col-sm-offset-2">
 					<div class="form-group">
@@ -116,13 +115,17 @@
                 </div>
 
                  <div class="col-sm-12">
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Login ID is required" ControlToValidate="TextBox1" ForeColor="Red"></asp:RequiredFieldValidator>
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password is required" ControlToValidate="TextBox2" ForeColor="Red"></asp:RequiredFieldValidator><br />
+                 <asp:Label ID="Label1" runat="server" CssClass="center-block"></asp:Label>
                  <asp:Button ID="Button1" runat="server" Text="Login" 
                          CssClass="button button-style button-style-dark button-style-icon fa fa-key " 
                          onclick="Button1_Click"></asp:Button>				    
                    
                 </div>
 
-            </div>         
+            </div> 
+            </div>  
      
      </section>
     <!-- Login End -->    

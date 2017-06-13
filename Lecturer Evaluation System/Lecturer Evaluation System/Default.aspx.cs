@@ -18,7 +18,7 @@ namespace Lecturer_Evaluation_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -42,6 +42,10 @@ namespace Lecturer_Evaluation_System
                             Session["userID"] = reader["userID"].ToString();
                             Session["userType"] = reader["userType"].ToString();
                             Session["fullname"] = reader["fullname"].ToString();
+                        }
+                        else
+                        {
+                            invalidLogin();
                         }
                     }
                     catch (Exception ex)
@@ -70,6 +74,13 @@ namespace Lecturer_Evaluation_System
                     }
                 }
             }
+        }
+
+        //why not triggered ._.
+        protected void invalidLogin()
+        {           
+            Label1.Text = "Invalid ID or password";
+            Response.Redirect("/Default.aspx#login");            
         }
     }
 }
