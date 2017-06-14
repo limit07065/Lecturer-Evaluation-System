@@ -33,8 +33,11 @@
                                         <%# DataBinder.Eval(Container.DataItem, "className") %></a>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="averageMarks" HeaderText="Marks" InsertVisible="False"
-                                ReadOnly="True" SortExpression="averageMarks" />
+                            <asp:TemplateField HeaderText="Marks">
+                                <ItemTemplate>
+                                    <%# DataBinder.Eval(Container.DataItem, "averageMarks", "{0: 0.00}")%>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField DataField="totalRated" HeaderText="Number of student rated" InsertVisible="False"
                                 ReadOnly="True" SortExpression="totalRated" />
                             <asp:BoundField DataField="totalEnrolled" HeaderText="Number of student enrolled"

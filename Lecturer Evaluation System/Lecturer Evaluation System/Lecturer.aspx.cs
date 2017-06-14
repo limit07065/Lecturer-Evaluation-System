@@ -18,6 +18,11 @@ namespace Lecturer_Evaluation_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["userType"] == null || !(Session["userType"].ToString().Equals("1")))
+            {
+                Response.Redirect("~/default.aspx");
+            }
+
             using (con = new SqlConnection(ConnectionString))
             {
                 cmd = new SqlCommand("viewClassLecturer", con);

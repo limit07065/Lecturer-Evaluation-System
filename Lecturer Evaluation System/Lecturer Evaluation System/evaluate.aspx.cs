@@ -17,9 +17,9 @@ namespace Lecturer_Evaluation_System
         protected static string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         protected SqlConnection con;
         protected SqlCommand cmd;
-        protected int rateID;
-        int[] qValues = { 1, 1, 1, 1, 1 };        
-        protected List<string> question; 
+        protected static int rateID;
+        protected static int[]  qValues = { 1, 1, 1, 1, 1 };        
+        protected static List<string> question; 
        
 
         protected void Page_Load(object sender, EventArgs e)
@@ -48,32 +48,6 @@ namespace Lecturer_Evaluation_System
                 question.Add("q4");
                 question.Add("q5");
 
-                
-                rbs.Add(RadioButton1);
-                rbs.Add(RadioButton2);
-                rbs.Add(RadioButton3);
-                rbs.Add(RadioButton4);
-                rbs.Add(RadioButton5);
-                rbs.Add(RadioButton6);
-                rbs.Add(RadioButton7);
-                rbs.Add(RadioButton8);
-                rbs.Add(RadioButton9);
-                rbs.Add(RadioButton10);
-                rbs.Add(RadioButton11);
-                rbs.Add(RadioButton12);
-                rbs.Add(RadioButton13);
-                rbs.Add(RadioButton14);
-                rbs.Add(RadioButton15);
-                rbs.Add(RadioButton16);
-                rbs.Add(RadioButton17);
-                rbs.Add(RadioButton18);
-                rbs.Add(RadioButton19);
-                rbs.Add(RadioButton20);
-                rbs.Add(RadioButton21);
-                rbs.Add(RadioButton22);
-                rbs.Add(RadioButton23);
-                rbs.Add(RadioButton24);
-                rbs.Add(RadioButton25);
 
                 getClass();
                 getEvaluation();
@@ -135,22 +109,23 @@ namespace Lecturer_Evaluation_System
                          qValues[2] = Convert.ToInt32(reader["question3"]);
                          qValues[3] = Convert.ToInt32(reader["question4"]);
                          qValues[4] = Convert.ToInt32(reader["question5"]);
-                        rateID = Convert.ToInt16(reader["rateID"]);
-                        String comment = "";
+                         rateID = Convert.ToInt16(reader["rateID"]);
+                         String comment = "";
+                         
+                         
+                         
+                         if (reader["comment"] != null)
+                         {
+                             comment = reader["comment"].ToString();
+                         }
                        
-                        
+                         //show previous evaluation
+                         updateRBS();
+                         showChoice();
+                         TextArea1.Text = comment;
+                         Session["exist"] = 1;
 
-                        if (reader["comment"] != null)
-                        {
-                            comment = reader["comment"].ToString();
-                        }
-                       
-                        //show previous evaluation
-                        showChoice();
-                        TextArea1.Text = comment;
-                        Session["exist"] = 1;
-
-                       
+                         
                     }
 
 
@@ -163,7 +138,9 @@ namespace Lecturer_Evaluation_System
                 finally { con.Close(); }
             }
             
-        }     
+        }
+
+        
 
         protected void showChoice()
         {
@@ -287,6 +264,8 @@ namespace Lecturer_Evaluation_System
 
         protected void updateQ()
         {
+            updateRBS();
+
             for (int i = 0; i < 5; i++)
             {
                 foreach (RadioButton radioButton in rbs)
@@ -305,6 +284,37 @@ namespace Lecturer_Evaluation_System
             }
             Session["qValues"] = qValues;           
 
+        }
+
+        protected void updateRBS()
+        {
+            rbs.Clear();
+
+            rbs.Add(RadioButton1);
+            rbs.Add(RadioButton2);
+            rbs.Add(RadioButton3);
+            rbs.Add(RadioButton4);
+            rbs.Add(RadioButton5);
+            rbs.Add(RadioButton6);
+            rbs.Add(RadioButton7);
+            rbs.Add(RadioButton8);
+            rbs.Add(RadioButton9);
+            rbs.Add(RadioButton10);
+            rbs.Add(RadioButton11);
+            rbs.Add(RadioButton12);
+            rbs.Add(RadioButton13);
+            rbs.Add(RadioButton14);
+            rbs.Add(RadioButton15);
+            rbs.Add(RadioButton16);
+            rbs.Add(RadioButton17);
+            rbs.Add(RadioButton18);
+            rbs.Add(RadioButton19);
+            rbs.Add(RadioButton20);
+            rbs.Add(RadioButton21);
+            rbs.Add(RadioButton22);
+            rbs.Add(RadioButton23);
+            rbs.Add(RadioButton24);
+            rbs.Add(RadioButton25);
         }
     }
 }
