@@ -48,7 +48,7 @@
                         <div class="col-xs-1"><h4>5</h4></div>
                     </div>
                     <div class="col-xs-12 form-control">
-                        <div class="col-xs-7"><b>1. Teaching</b></div>
+                        <div class="col-xs-7"><b>1. Knowledge Conduction</b></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton1" runat="server" GroupName="q1" value="1"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton6" runat="server" GroupName="q1" value="2"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton7" runat="server" GroupName="q1" value="3"></asp:RadioButton></div>
@@ -56,7 +56,7 @@
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton9" runat="server" GroupName="q1" value="5"></asp:RadioButton></div>
                     </div>
                      <div class="col-xs-12 form-control">
-                        <div class="col-xs-7"><b>2. Project</b></div>
+                        <div class="col-xs-7"><b>2. Project Guidance</b></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton2" runat="server" GroupName="q2" value="1"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton3" runat="server" GroupName="q2" value="2"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton4" runat="server" GroupName="q2" value="3"></asp:RadioButton></div>
@@ -64,7 +64,7 @@
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton10" runat="server" GroupName="q2" value="5"></asp:RadioButton></div>
                     </div>
                     <div class="col-xs-12 form-control">
-                        <div class="col-xs-7"><b>3. </b></div>
+                        <div class="col-xs-7"><b>3. Communication</b></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton11" runat="server" GroupName="q3" value="1"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton14" runat="server" GroupName="q3" value="2"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton15" runat="server" GroupName="q3" value="3"></asp:RadioButton></div>
@@ -72,7 +72,7 @@
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton17" runat="server" GroupName="q3" value="5"></asp:RadioButton></div>
                     </div>
                     <div class="col-xs-12 form-control">
-                        <div class="col-xs-7"><b>4. Project</b></div>
+                        <div class="col-xs-7"><b>4. Encouragement and Motivation</b></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton12" runat="server" GroupName="q4" value="1"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton18" runat="server" GroupName="q4" value="2"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton19" runat="server" GroupName="q4" value="3"></asp:RadioButton></div>
@@ -80,7 +80,7 @@
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton21" runat="server" GroupName="q4" value="5"></asp:RadioButton></div>
                     </div>
                         <div class="col-xs-12 form-control">                   
-                        <div class="col-xs-7"><b>5. Project</b></div>
+                        <div class="col-xs-7"><b>5. Attitude </b></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton13" runat="server" GroupName="q5" value="1"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton22" runat="server" GroupName="q5" value="2"></asp:RadioButton></div>
                         <div class="col-xs-1"><asp:RadioButton ID="RadioButton23" runat="server" GroupName="q5" value="3"></asp:RadioButton></div>
@@ -90,7 +90,7 @@
 
                         <div class="col-xs-12 form-control" style="height:120px">  
                           
-                                <div class="col-xs-12" ><b>6. FeedBack</b> <br /> <br /></div>
+                                <div class="col-xs-12" ><b>6. Other Comment</b> <br /> <br /></div>
                                
                                 <div class="col-xs-12"  ><b>       
                                     <asp:TextBox ID="TextArea1" TextMode="multiline"  runat="server" Height="70" CssClass="col-xs-12" />
